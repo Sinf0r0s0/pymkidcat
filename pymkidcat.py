@@ -23,7 +23,6 @@ def to_brute(pmkid, essid, msg):
             trans_5C = "".join(chr(x ^ 0x5c) for x in xrange(256))
             trans_36 = "".join(chr(x ^ 0x36) for x in xrange(256))
             blocksize = sha1().block_size
-            len(pmk) > blocksize
             pmk += chr(0) * (blocksize - len(pmk))
             o_key_pad = pmk.translate(trans_5C)
             i_key_pad = pmk.translate(trans_36)
@@ -33,7 +32,7 @@ def to_brute(pmkid, essid, msg):
                 end = datetime.datetime.now()
                 elapsed = end - start                
 
-                print ("[!] Cracked!!! BSSID...: " + essid + "\n               PSK...: " + line + "\n               Time elapsed...: " + str(elapsed)[:-3] + "\n" )
+                print("[!] Cracked!!! BSSID...: " + essid + "\n               PSK...: " + line + "\n               Time elapsed...: " + str(elapsed)[:-3] + "\n" )
 
                 sys.exit()
 
@@ -50,14 +49,14 @@ if __name__ == '__main__':
     try:
         wf = open(wordlist, 'r')
     except IOError:
-        print ('[!] I cannot load this file: "'+wordlist+'"!')
+        print('[!] I cannot load this file: "'+wordlist+'"!')
         sys.exit()
     if hash_file is not None:
         try:
             to_crack = [line.strip()
             for line in open(hash_file)]
         except IOError:
-            print ('[!] I cannot load this file: "'+hash_file+'"!')
+            print('[!] I cannot load this file: "'+hash_file+'"!')
             sys.exit()
 
         #Creates processes for each hash
