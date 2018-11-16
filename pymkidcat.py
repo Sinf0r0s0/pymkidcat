@@ -63,7 +63,7 @@ if __name__ == '__main__':
     try:
         wf = open(wordlist, 'r')
     except IOError:
-        print("[!] I cannot load this file: " + wordlist + "!")
+        print("[!] I cannot load this file: " + wordlist)
         sys.exit()
     if hash_file is not None:
         try:
@@ -71,7 +71,7 @@ if __name__ == '__main__':
                         for line in open(hash_file)]
 
         except IOError:
-            print("[!] I cannot load this file: " + hash_file + "!")
+            print("[!] I cannot load this file: " + hash_file)
             sys.exit()
 
         to_crack = filter(None, to_crack) 
