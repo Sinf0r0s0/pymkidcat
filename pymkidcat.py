@@ -32,9 +32,7 @@ def to_brute(sem):
                 end = datetime.datetime.now()
                 elapsed = end - start
 
-                print(
-                    "[!] Cracked!!! BSSID...: " + essid + "\n               PSK...: " + line +
-                        "\n               Time elapsed...: " + str(elapsed)[:-3] + "\n")
+                print("[!] AP: %s Cracked!!!\n\t\tPSK...: %s \n\t\tTime elapsed...: %s \n" % (essid, line, str(elapsed)[:-3]))
 
                 sem.release()
 
